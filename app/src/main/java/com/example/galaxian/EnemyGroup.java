@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Point;
+import android.provider.SyncStateContract;
 
 import java.util.LinkedList;
 import java.util.Random;
@@ -29,7 +30,7 @@ public class EnemyGroup {
 
     private LinkedList<Enemy> listaVolando; // lista que contiene a todos los enemigos que están volando fuera del grupo de enemigos
 
-    public EnemyGroup(Resources res) {
+    public EnemyGroup(Resources res, PlayerSpaceship player, Health health) {
 
         this.group = new Enemy[4][6];
 
@@ -39,7 +40,7 @@ public class EnemyGroup {
 
         for(int i=0; i<group.length; i++) { // se crean todas las instancias de enemigos
             for(int j=0; j<group[0].length; j++) {
-                this.group[i][j] = new Enemy(res, this.listaVolando);
+                this.group[i][j] = new Enemy(res, this.listaVolando, player, health);
 
                 if(j < group[0].length/2) {
                     this.group[i][j].setFlightDirection(0);

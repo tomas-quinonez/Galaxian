@@ -16,7 +16,9 @@
         android:text="Juego Pausado"
         android:textAlignment="center"
         android:textColor="#D5238D"
-        android:textSize="90sp"
+        android:textSize="70sp"
+        android:layout_marginVertical="90sp"
+        android:fontFamily="@font/eight_bit_operator_plus8_bold"
         android:textStyle="bold" />
 
     <Button
@@ -27,7 +29,8 @@
         android:layout_centerHorizontal="true"
         android:background="#1BD844"
         android:text="Continuar"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/eight_bit_operator_plus8_bold"
         android:textSize="30dp"/>
 
     <Button
@@ -38,7 +41,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
         android:background="#D8831B"
-        android:text="Menú Principal"
+        android:text="Menu"
+        android:fontFamily="@font/eight_bit_operator_plus8_bold"
         android:textSize="30dp" />
 
 </RelativeLayout>

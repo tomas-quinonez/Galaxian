@@ -13,9 +13,13 @@ public class EnemyShot {
     private int position;
     private Paint paint;
     private Enemy enemy;
+    private PlayerSpaceship player;
+    private Health health;
 
-    public EnemyShot(Enemy enemy) {
+    public EnemyShot(Enemy enemy, PlayerSpaceship player, Health health) {
         this.enemy = enemy;
+        this.player = player;
+        this.health = health;
         this.paint = new Paint();
         this.paint.setColor(RED);
         this.position = enemy.getEnemyWidth()/2;
@@ -30,6 +34,9 @@ public class EnemyShot {
     }
 
     public void update() {
+
+        checkPlayer();
+
         this.y+=20;
         if(this.y>1200) {
             this.x = enemy.getPoint().x;
@@ -41,8 +48,14 @@ public class EnemyShot {
         return new Point(this.x, this.y);
     }
 
-    public void enemyKilled() {
-        this.x = enemy.getPoint().x;
-        this.y = enemy.getPoint().y;
+    public void checkPlayer() {
+        if(this.x != 0) {
+            if((x > player.getPoint().x-25 && x < (player.getPoint().x + player.getPlayerBitmap().getWidth()-55)) && ((y+80) > player.getPoint().y)) {
+                player.resetPosition();
+                health.killPlayer();
+                this.x = 0;
+                this.y = 1300;
+            }
+        }
     }
 }

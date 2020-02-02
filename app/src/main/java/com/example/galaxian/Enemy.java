@@ -26,7 +26,7 @@ public class Enemy {
 
     private EnemyShot enemyShot;
 
-    public Enemy(Resources res, LinkedList<Enemy> listaVolando) {
+    public Enemy(Resources res, LinkedList<Enemy> listaVolando, PlayerSpaceship player, Health health) {
         this.enemy = BitmapFactory.decodeResource(res, R.drawable.enemy1);
         this.enemy = Bitmap.createScaledBitmap(enemy, 90, 90, false);
         this.draw = true;
@@ -38,7 +38,7 @@ public class Enemy {
         this.countLeft = 0;
         this.countRight = 0;
         this.flightDirection = 0;
-        this.enemyShot = new EnemyShot(this);
+        this.enemyShot = new EnemyShot(this, player, health);
     }
 
     // metodo para dibujar el enemigo dentro del grupo de enemigos (en la matriz)
@@ -67,7 +67,7 @@ public class Enemy {
         if(draw || flying) {
             int x = playerShot.getCoordinates().x;
             int y = playerShot.getCoordinates().y;
-            if((x < point.x && point.x < (x + enemy.getWidth())) && (point.y < y && y < (point.y + enemy.getHeight()))) {
+            if((x > point.x-60 && x < (point.x + enemy.getWidth()-55)) && (y > point.y && y < (point.y + enemy.getHeight()+15))) {
                 this.keepDrawing(false);
                 listaVolando.remove(this);
                 this.flying = false;

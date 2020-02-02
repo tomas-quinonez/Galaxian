@@ -4,51 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash_background"
+    android:background="@drawable/game_background"
     tools:context=".MainActivity">
 
 
     <TextView
-        android:id="@+id/title_gal"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:fontFamily="@font/eight_bit_operator_plus8_bold"
         android:text="Galaxian"
-        android:textColor="#CEEE15"
+        android:textColor="#45F504"
+        android:textSize="65sp"
         android:textStyle="bold"
-        android:textSize="90sp" />
+        android:layout_marginTop="60sp"/>
+
+    <ImageView
+        android:id="@+id/img_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:maxHeight="10dp"
+        android:layout_marginTop="20sp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/game_icon" />
+
 
     <Button
         android:id="@+id/play_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/title_gal"
+        android:layout_below="@id/img_title"
         android:layout_centerHorizontal="true"
         android:background="#1BD844"
         android:text="Jugar"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/eight_bit_operator_plus8_bold"
         android:textSize="30dp"/>
 
     <Button
-        android:id="@+id/about_button"
+        android:id="@+id/scoreboard_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/play_button"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
         android:background="#D8831B"
-        android:text="Acerca"
+        android:text="Puntajes"
+        android:fontFamily="@font/eight_bit_operator_plus8_bold"
         android:textSize="30dp" />
 
     <Button
         android:id="@+id/exit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/about_button"
+        android:layout_below="@id/scoreboard_button"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
         android:background="#D81B7D"
         android:text="Salir"
+        android:fontFamily="@font/eight_bit_operator_plus8_bold"
         android:textSize="30dp" />
 </RelativeLayout>

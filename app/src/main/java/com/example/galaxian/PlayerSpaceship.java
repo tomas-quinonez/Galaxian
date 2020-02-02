@@ -12,12 +12,14 @@ public class PlayerSpaceship {
     private Bitmap playerBitmap;
     private int speed;
     private Point point;
+    private int count;
 
     public PlayerSpaceship(Resources res) {
-        playerBitmap = BitmapFactory.decodeResource(res, R.drawable.player);
-        playerBitmap = Bitmap.createScaledBitmap(playerBitmap, 120, 120, false);
+        playerBitmap = BitmapFactory.decodeResource(res, R.drawable.player2);
+        playerBitmap = Bitmap.createScaledBitmap(playerBitmap, 130, 130, false);
         this.speed = 0;
         this.point = new Point(290, 1100);
+        this.count = 0;
     }
 
     public void draw(Canvas canvas) {
@@ -26,10 +28,10 @@ public class PlayerSpaceship {
 
     public void update(int canvasWidth) {
         point.x+=this.speed;
-        if(point.x>canvasWidth-playerBitmap.getWidth()) { // se verifica que no swe dibuje la nave fuera del ancho del canvas
+        if(point.x>canvasWidth-playerBitmap.getWidth()) { // se verifica que no se dibuje la nave fuera del ancho del canvas
             point.x=canvasWidth-playerBitmap.getWidth();
         }
-        if(point.x<0){ // se verifica que no swe dibuje la nave fuera del ancho del canvas
+        if(point.x<0){ // se verifica que no se dibuje la nave fuera del ancho del canvas
             point.x=0;
         }
     }
@@ -46,4 +48,11 @@ public class PlayerSpaceship {
         return this.playerBitmap.getWidth();
     }
 
+    public void resetPosition() {
+        this.point.set(290, 1100);
+    }
+
+    public Bitmap getPlayerBitmap() {
+        return this.playerBitmap;
+    }
 }

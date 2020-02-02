@@ -1,9 +1,12 @@
 package com.example.galaxian;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+
+import androidx.core.content.res.ResourcesCompat;
 
 public class Timer {
 
@@ -19,7 +22,7 @@ public class Timer {
 
     private Paint paint;
 
-    public Timer() {
+    public Timer(Context context) {
 
         this.timeLeftMilliseconds = 121000;
         this.timeElapsed = 0;
@@ -29,7 +32,7 @@ public class Timer {
         this.paint.setColor(Color.YELLOW);
         paint.setTextSize(50);
         paint.setAntiAlias(true);
-        paint.setTypeface(Typeface.DEFAULT_BOLD);
+        this.paint.setTypeface(ResourcesCompat.getFont(context, R.font.eight_bit_operator_plus8_bold));
     }
 
     public void draw(Canvas canvas) {

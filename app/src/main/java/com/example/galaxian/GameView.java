@@ -37,7 +37,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     private PauseButton pauseButton;
 
-    private Bitmap[] hearts;
+    private Health health;
 
     public GameView(Context context) {
         super(context);
@@ -48,23 +48,19 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
         background = BitmapFactory.decodeResource(getResources(), R.drawable.game_background);
 
-        timer = new Timer();
+        timer = new Timer(context);
+
+        score = new Score(context);
+
+        health = new Health(getResources(), getContext(), score);
 
         player = new PlayerSpaceship(getResources());
 
-        playerShot = new PlayerShot(player);
-
-        score = new Score();
+        playerShot = new PlayerShot(player, context);
 
         pauseButton = new PauseButton(getResources());
 
-        enemyGroup = new EnemyGroup(getResources());
-
-        hearts = new Bitmap[2];
-
-        hearts[0] = BitmapFactory.decodeResource(getResources(), R.drawable.hearts);
-        hearts[0] = Bitmap.createScaledBitmap(hearts[0], 50, 50, false);
-        hearts[1] = BitmapFactory.decodeResource(getResources(), R.drawable.heart_grey);
+        enemyGroup = new EnemyGroup(getResources(), player, health);
     }
 
     @Override
@@ -105,6 +101,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
         timer.draw(canvas);
 
+        health.draw(canvas);
+
         player.draw(canvas);
 
         playerShot.draw(canvas);
@@ -113,9 +111,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
         enemyGroup.draw(canvas);
 
-        canvas.drawBitmap(hearts[0], 125, 17, null);
-        canvas.drawBitmap(hearts[0], 185, 17, null);
-        canvas.drawBitmap(hearts[0], 245, 17, null);
+
     }
 
     public void update(Canvas canvas) {
@@ -124,6 +120,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         playerShot.update();
 
         enemyGroup.update(canvas.getWidth(), playerShot, score);
+
+        health.update();
     }
 
     @Override

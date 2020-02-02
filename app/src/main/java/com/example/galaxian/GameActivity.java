@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -13,7 +16,6 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
         super.onCreate(savedInstanceState);
 
         gameView = new GameView(this);
@@ -21,14 +23,15 @@ public class GameActivity extends AppCompatActivity {
         setContentView(gameView);
 
         onWindowFocusChanged(true); // modo pantalla completa
+
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Intent intent = new Intent(this, PauseActivity.class);
+        /*Intent intent = new Intent(this, PauseActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.anim.zoom_back_in, R.anim.zoom_back_out);
+        overridePendingTransition(R.anim.zoom_back_in, R.anim.zoom_back_out);*/
         gameView.pause();
     }
 

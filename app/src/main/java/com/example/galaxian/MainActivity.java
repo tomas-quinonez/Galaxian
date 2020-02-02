@@ -30,6 +30,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        startButton = (Button) findViewById(R.id.scoreboard_button);
+
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ScoreboardActivity.class);
+                startActivity(intent);
+            }
+        });
+
         exitButton = (Button) findViewById(R.id.exit_button);
 
         exitButton.setOnClickListener(new View.OnClickListener() {
